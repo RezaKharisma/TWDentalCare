@@ -20,6 +20,8 @@
 <!-- Place this tag in your head or just before your close body tag. -->
 <script src="{{ asset('vendor/js/buttons.js') }}"></script>
 
+@livewireScripts
+
 @stack('script')
 
 </body>

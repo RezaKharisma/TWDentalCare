@@ -3,7 +3,7 @@
 
 <!-- Layout wrapper -->
 <div class="layout-wrapper layout-content-navbar">
-    <div class="layout-container asd">
+    <div class="layout-container">
 
         <!-- Sidebar -->
         @include('components.partials.sideMenu')

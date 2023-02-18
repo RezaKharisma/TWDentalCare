@@ -178,4 +178,7 @@
             </div>
         </div>
     </div>
+
+    <livewire:form-dokter />
+
 </x-layouts.main>
