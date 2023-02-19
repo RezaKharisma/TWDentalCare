@@ -178,9 +178,4 @@
             </div>
         </div>
     </div>
-
-    <livewire:form-dokter />
-
-    <x-ui.button type='button' name='Simpan' />
-
 </x-layouts.main>

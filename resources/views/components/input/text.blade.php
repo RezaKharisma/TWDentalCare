@@ -1,14 +1,51 @@
-@if ($layout == 'V')
+{{-- 
+* $type (Menentukan tipe input)
+* $layout (Menentukan layout input : Horizontal / Vertical)
+* $label (Penamaan label input)
+* $name (Name label input)
+* $required (Input diperlukan)
+* $icon (Icon pada input)
+* $endText (Text pada belakang input)
+--}}
+
+@if ($layout == 'V' || $layout == 'Vertical')
     <div class="mb-3">
-        <label class="form-label" for="basic-default-fullname">Full Name</label>
-        <input type="text" class="form-control" id="basic-default-fullname" placeholder="John Doe" {{ $attributes }}>
+        <label class="form-label" for="{{ $label }}">{{ $label }} 
+            @if ($required)
+                <span style="color: red">*</span>
+            @endif
+        </label>
+        @if ($icon)
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-{{ $icon }}"></i></span>
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif> 
+                @if ($endText)
+                    <span class="input-group-text">{{ $endText }}</span>
+                @endif
+            </div>
+        @else
+            <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif>
+        @endif
     </div>
-@elseif ($layout == 'H')
+@elseif ($layout == 'H' || $layout == 'Horizontal')
     <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="basic-default-name">Name</label>
+        <label class="col-sm-2 col-form-label">{{ $label }} 
+            @if ($required)
+                <span style="color: red">*</span>
+            @endif
+        </label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="basic-default-name" placeholder="John Doe"
-                {{ $attributes }}>
+            @if ($icon)
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-{{ $icon }}"></i></span>
+                    <input type="text" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif> 
+                    @if ($endText)
+                        <span class="input-group-text">{{ $endText }}</span>
+                    @endif
+                </div>
+            @else
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif>
+            @endif
         </div>
     </div>
 @endif

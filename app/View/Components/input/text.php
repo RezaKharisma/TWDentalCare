@@ -6,17 +6,34 @@ use Illuminate\View\Component;
 
 class text extends Component
 {
+    public $type;
 
-    public $layout = 'V';
+    public $layout;
+
+    public $label;
+
+    public $name;
+
+    public $required;
+
+    public $icon;
+
+    public $endText;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($layout)
+    public function __construct($type = null, $layout = null, $label = null, $name = null, $required = null, $icon = null, $endText = null)
     {
-        $this->layout = $layout;
+        $this->layout = $type ?? 'text';
+        $this->layout = $layout ?? 'V';
+        $this->label = $label ?? 'Label';
+        $this->name = $name ?? 'name';
+        $this->required = $required;
+        $this->icon = $icon;
+        $this->endText = $endText;
     }
 
     /**
