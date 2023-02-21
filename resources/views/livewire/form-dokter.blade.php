@@ -1,16 +1,8 @@
 <div>
     <form class="mt-4">
-        <x-input.text layout="H" label="nama lengkap" name="nama" icon="user" endText="Contoh" autofocus required/>
-        <div class="row mb-3">
-            <label class="col-sm-2 col-form-label">Email <span class="required">*</span></label>
-            <div class="col-sm-10">
-                <div class="input-group input-group-merge">
-                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                    <input type="text" class="form-control" placeholder="john.doe">
-                    <span class="input-group-text">@example.com</span>
-                </div>
-            </div>
-        </div>
+        <x-input.text layout="H" label="nama lengkap" name="nama" autofocus required/>
+        <x-input.text layout="H" type="email" label="email" name="email" icon="envelope" required/>
+
         <div class="row mb-3">
             <label class="col-sm-2 col-form-label">Jenis Kelamin <span class="required">*</span></label>
             <div class="col-md">
