@@ -34,7 +34,7 @@
                     <img src="{{ $defaultImage }}" {{ $attributes->merge(['class' => 'img-thumbnail']) }} alt="{{ $name }}" width="{{ $width }}">
                 @endif
             </div>
-            <input class="form-control" type="file" name="{{ $name }}" @if ($required) required @endif id="foto" {{ $attributes->whereStartsWith('wire:model') }}> 
+            <input class="form-control" type="file" name="{{ $name }}" @if ($required) required @endif {{ $attributes->whereStartsWith('wire:model') }}>
         </div>
     </div>
 @endif

@@ -3,7 +3,7 @@
 * $label (Penamaan label input)
 * $name (Name label input)
 * $required (Input diperlukan)
-* $options (Isi pilihan option (array), 
+* $options (Isi pilihan option (array),
     [
         'label' => '...',
         'value' => '...',
@@ -19,9 +19,10 @@
                 <span style="color: red">*</span>
             @endif
         </label>
-        <select {{ $attributes->merge(['class' => 'form-select']) }} name="{{ $name }}" @if ($required) required @endif>
+        <select {{ $attributes->merge(['class' => 'form-select']) }} name="{{ $name }}" @if ($required) required @endif
+            {{ $attributes->whereStartsWith('wire:model') }}>
             @foreach ($options as $key => $opt)
-                <option 
+                <option
                     {{ $opt['disabled'] == true ? 'disabled' : '' }}
                     {{ $opt['selected'] == true ? 'disabled' : '' }}
                     value="{{ $opt['value'] }}">
@@ -38,9 +39,10 @@
             @endif
         </label>
         <div class="col-sm-10">
-            <select {{ $attributes->merge(['class' => 'form-select']) }} name="{{ $name }}" @if ($required) required @endif >
+            <select {{ $attributes->merge(['class' => 'form-select']) }} name="{{ $name }}" @if ($required) required @endif
+                {{ $attributes->whereStartsWith('wire:model') }}>
                 @foreach ($options as $key => $opt)
-                    <option 
+                    <option
                         {{ $opt['disabled'] == true ? 'disabled' : '' }}
                         {{ $opt['selected'] == true ? 'selected' : '' }}
                         value="{{ $opt['value'] }}">

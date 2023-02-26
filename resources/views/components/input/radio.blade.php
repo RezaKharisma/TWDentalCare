@@ -3,7 +3,7 @@
 * $label (Penamaan label input)
 * $name (Name label input)
 * $required (Input diperlukan)
-* $radios (Isi pilihan radio, (array), 
+* $radios (Isi pilihan radio, (array),
     [
         'value' => '...',
         'label' => '...'
@@ -19,7 +19,10 @@
         </label>
         @foreach ($radios as $key => $rad)
         <div class="form-check form-check-inline">
-            <input name="{{ $name }}" {{ $attributes->merge(['class' => 'form-check-input']) }} type="radio" value="{{ $rad['value'] }}" id="radio-{{ $name }}{{ $key+1 }}" @if ($required) required @endif>
+            <input name="{{ $name }}"
+            {{ $attributes->merge(['class' => 'form-check-input']) }}
+            type="radio" value="{{ $rad['value'] }}" id="radio-{{ $name }}{{ $key+1 }}" @if ($required) required @endif
+            {{ $attributes->whereStartsWith('wire:model') }}>
             <label class="form-check-label">
                 {{ $rad['label'] }}
             </label>
@@ -33,10 +36,13 @@
             <span style="color: red">*</span>
             @endif
         </label>
-        <div class="col-md">
+        <div class="col-sm-10">
             @foreach ($radios as $key => $rad)
             <div class="form-check">
-                <input name="{{ $name }}" {{ $attributes->merge(['class' => 'form-check-input']) }} type="radio" value="{{ $rad['value'] }}" id="radio{{ $name }}{{ $key+1 }}" @if ($required) required @endif>
+                <input name="{{ $name }}"
+                {{ $attributes->merge(['class' => 'form-check-input']) }}
+                type="radio" value="{{ $rad['value'] }}" id="radio{{ $name }}{{ $key+1 }}" @if ($required) required @endif
+                {{ $attributes->whereStartsWith('wire:model') }}>
                 <label class="form-check-label">
                     {{ $rad['label'] }}
                 </label>

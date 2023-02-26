@@ -13,7 +13,9 @@
             <span style="color: red">*</span>
             @endif
         </label>
-        <textarea {{ $attributes->merge(['class' => 'form-control']) }} placeholder="Masukkan {{ $name }}" @if ($required) required @endif>{{ $value }}</textarea>
+        <textarea {{ $attributes->merge(['class' => 'form-control']) }}
+            placeholder="Masukkan {{ $name }}" @if ($required) required @endif
+            {{ $attributes->whereStartsWith('wire:model') }}>{{ $value }}</textarea>
     </div>
 @elseif ($layout == 'H' || $layout == 'Horizontal')
     <div class="row mb-3">
@@ -23,7 +25,9 @@
             @endif
         </label>
         <div class="col-sm-10">
-            <textarea {{ $attributes->merge(['class' => 'form-control']) }} placeholder="Masukkan {{ $name }}" @if ($required) required @endif>{{ $value }}</textarea>
+            <textarea {{ $attributes->merge(['class' => 'form-control']) }}
+                placeholder="Masukkan {{ $name }}" @if ($required) required @endif
+                {{ $attributes->whereStartsWith('wire:model') }}>{{ $value }}</textarea>
         </div>
     </div>
 @endif

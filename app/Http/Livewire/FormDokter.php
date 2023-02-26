@@ -9,7 +9,18 @@ class FormDokter extends Component
 {
     use WithFileUploads;
 
-    public $nama;
+    public $form = [
+        'nama' => '',
+        'email' => '',
+        'jenisKelamin' => '',
+        'tempatLahir' => '',
+        'tanggalLahir' => '',
+        'agama' => '0',
+        'nomorTelepon' => '',
+        'alamat' => '',
+        'pendidikan' => '',
+        'foto' => '',
+    ];
 
     public $foto;
 
@@ -62,6 +73,11 @@ class FormDokter extends Component
                 'selected' => false,
             ]
         ];
+    }
+
+    public function updatedFoto()
+    {
+        $this->form['foto'] = $this->foto;
     }
 
     public function render()
