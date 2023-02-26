@@ -1,17 +1,47 @@
-<div class="row mb-3">
-    <label class="col-sm-2 col-form-label">{{ $label }}
-        @if ($required)
+{{--
+* $layout (Menentukan layout input : Horizontal / Vertical)
+* $label (Penamaan label input)
+* $name (Name label input)
+* $required (Input diperlukan)
+* $radios (Isi pilihan radio, (array), 
+    [
+        'value' => '...',
+        'label' => '...'
+    ])
+--}}
+
+@if ($layout == 'V' || $layout == 'Vertical')
+    <div class="col-md mb-3">
+        <label class="form-label d-block mb-3">{{ $label }}
+            @if ($required)
             <span style="color: red">*</span>
-        @endif
-    </label>
-    <div class="col-md">
-        @foreach ($radio as $rad)
-            <div class="form-check">
-                <input name="{{ $name }}" {{ $attributes->merge(['class' => 'form-check-input']) }} type="radio" value="{{ $rad->value }}">
-                <label class="form-check-label">
-                    {{ $rad->value }}
-                </label>
-            </div>
+            @endif
+        </label>
+        @foreach ($radios as $key => $rad)
+        <div class="form-check form-check-inline">
+            <input name="{{ $name }}" {{ $attributes->merge(['class' => 'form-check-input']) }} type="radio" value="{{ $rad['value'] }}" id="radio-{{ $name }}{{ $key+1 }}" @if ($required) required @endif>
+            <label class="form-check-label">
+                {{ $rad['label'] }}
+            </label>
+        </div>
         @endforeach
     </div>
-</div>
+@elseif ($layout == 'H' || $layout == 'Horizontal')
+    <div class="row mb-3">
+        <label class="col-sm-2 col-form-label">{{ $label }}
+            @if ($required)
+            <span style="color: red">*</span>
+            @endif
+        </label>
+        <div class="col-md">
+            @foreach ($radios as $key => $rad)
+            <div class="form-check">
+                <input name="{{ $name }}" {{ $attributes->merge(['class' => 'form-check-input']) }} type="radio" value="{{ $rad['value'] }}" id="radio{{ $name }}{{ $key+1 }}" @if ($required) required @endif>
+                <label class="form-check-label">
+                    {{ $rad['label'] }}
+                </label>
+            </div>
+            @endforeach
+        </div>
+    </div>
+@endif

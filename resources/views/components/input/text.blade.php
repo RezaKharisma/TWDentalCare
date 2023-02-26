@@ -6,6 +6,7 @@
 * $required (Input diperlukan)
 * $icon (Icon pada input)
 * $endText (Text pada belakang input)
+* $value (Value pada input)
 --}}
 
 @if ($layout == 'V' || $layout == 'Vertical')
@@ -18,13 +19,13 @@
         @if ($icon)
             <div class="input-group">
                 <span class="input-group-text"><i class="fas fa-{{ $icon }}"></i></span>
-                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif>
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
                 @if ($endText)
                     <span class="input-group-text">{{ $endText }}</span>
                 @endif
             </div>
         @else
-            <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif>
+            <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
         @endif
     </div>
 @elseif ($layout == 'H' || $layout == 'Horizontal')
@@ -38,13 +39,13 @@
             @if ($icon)
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-{{ $icon }}"></i></span>
-                    <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif>
+                    <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
                     @if ($endText)
                         <span class="input-group-text">{{ $endText }}</span>
                     @endif
                 </div>
             @else
-                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif>
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
             @endif
         </div>
     </div>

@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('img/favicon/favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/LogoProgram.ico') }}" />
 
     <!-- Fonts -->
     <link href="{{ asset('fonts/PublicSans.css') }}" rel="stylesheet" />

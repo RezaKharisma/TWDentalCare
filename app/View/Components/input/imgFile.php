@@ -4,10 +4,8 @@ namespace App\View\Components\input;
 
 use Illuminate\View\Component;
 
-class text extends Component
+class imgFile extends Component
 {
-    public $type;
-
     public $layout;
 
     public $label;
@@ -16,27 +14,26 @@ class text extends Component
 
     public $required;
 
-    public $icon;
+    public $width;
 
-    public $endText;
+    public $foto;
 
-    public $value;
+    public $defaultImage;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type = null, $layout = null, $label = null, $name = null, $required = null, $icon = null, $endText = null, $value = null)
+    public function __construct($layout = null, $label = null, $name = null, $required = null, $width = null, $defaultImage = null, $foto = null)
     {
-        $this->type = $type ?? 'text';
         $this->layout = $layout ?? 'V';
         $this->label = $label ?? 'Label';
         $this->name = $name ?? 'name';
         $this->required = $required;
-        $this->icon = $icon;
-        $this->endText = $endText;
-        $this->value = $value;
+        $this->width = $width ?? "100";
+        $this->defaultImage = $defaultImage;
+        $this->foto = $foto;
     }
 
     /**
@@ -46,6 +43,6 @@ class text extends Component
      */
     public function render()
     {
-        return view('components.input.text');
+        return view('components.input.img-file');
     }
 }
