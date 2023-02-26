@@ -36,7 +36,7 @@ class text extends Component
         $this->required = $required;
         $this->icon = $icon;
         $this->endText = $endText;
-        $this->value = $value;
+        $this->value = $value ?? '';
     }
 
     /**

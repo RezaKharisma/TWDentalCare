@@ -10,10 +10,8 @@ class FormDokter extends Component
     use WithFileUploads;
 
     public $nama;
-    public $email;
-    public $jenisKelamin;
 
-    public $photo;
+    public $foto;
 
     public $jenKelRadios;
 

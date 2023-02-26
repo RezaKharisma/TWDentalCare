@@ -19,13 +19,15 @@
         @if ($icon)
             <div class="input-group">
                 <span class="input-group-text"><i class="fas fa-{{ $icon }}"></i></span>
-                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
+                {{ $attributes->whereStartsWith('wire:model') }}>
                 @if ($endText)
                     <span class="input-group-text">{{ $endText }}</span>
                 @endif
             </div>
         @else
-            <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
+            <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
+            {{ $attributes->whereStartsWith('wire:model') }}>
         @endif
     </div>
 @elseif ($layout == 'H' || $layout == 'Horizontal')
@@ -39,13 +41,15 @@
             @if ($icon)
                 <div class="input-group">
                     <span class="input-group-text"><i class="fas fa-{{ $icon }}"></i></span>
-                    <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder=" Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
+                    <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
+                    {{ $attributes->whereStartsWith('wire:model') }}>
                     @if ($endText)
                         <span class="input-group-text">{{ $endText }}</span>
                     @endif
                 </div>
             @else
-                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value={{ $value }}>
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => 'form-control']) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
+                {{ $attributes->whereStartsWith('wire:model') }}>
             @endif
         </div>
     </div>
