@@ -2,15 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use App\Http\Controllers\DokterController;
-use Illuminate\Http\Request;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
-class FormDokter extends Component
+class FormPerawat extends Component
 {
-    use WithFileUploads;
-
     public $form = [
         'nama' => '',
         'email' => '',
@@ -25,13 +20,26 @@ class FormDokter extends Component
         'foto' => '',
     ];
 
+    protected $validationAttributes = [
+        'form.nama' => 'Nama Lengkap',
+        'form.email' => 'Email',
+        'form.jenisKelamin' => 'Jenis Kelamin',
+        'form.tempatLahir' => 'Tempat Lahir',
+        'form.tanggalLahir' => 'Tanggal Lahir',
+        'form.umur' => 'Umur',
+        'form.agama' => 'Agama',
+        'form.alamat' => 'Alamat',
+        'form.pendidikan' => 'Pendidikan',
+        'form.foto' => 'Foto',
+    ];
+
     public $foto;
 
     public $jenKelRadios;
 
     public $agamaSelect;
 
-    public $buttonType = "button";
+    public $kesalahan;
 
     public function mount()
     {
@@ -84,11 +92,8 @@ class FormDokter extends Component
 
     public function updated($form)
     {
-        $validatedData = $this->validateOnly($form, $this->getRules());
-
-        if ($validatedData) {
-            $this->buttonType = "submit";
-        }
+        $this->kesalahan = $this->errorBag;
+        $this->validateOnly($form, $this->getRules());
     }
 
     public function updatedFoto()
@@ -107,7 +112,7 @@ class FormDokter extends Component
             'form.agama' => 'sometimes|nullable',
             'form.alamat' => 'required',
             'form.pendidikan' => 'sometimes|nullable',
-            'form.foto' => 'required|size:1024|mimes:jpg,bmp,png,jpeg',
+            'form.foto' => 'required|size:1024|mimes:jpg,bmp,png',
         ];
     }
 
@@ -115,7 +120,9 @@ class FormDokter extends Component
     {
         $this->resetErrorBag();
         $this->resetValidation();
+
         $this->foto = [];
+
         $this->form = [
             'nama' => '',
             'email' => '',
@@ -128,20 +135,6 @@ class FormDokter extends Component
             'pendidikan' => '',
             'foto' => '',
         ];
-    }
-
-    public function getPath()
-    {
-        return dirname($this->storage->path($this->form['foto']));
-    }
-
-    public function simpan()
-    {
-        $validatedData = $this->validate($this->getRules());
-
-        if ($validatedData) {
-            $this->buttonType = "submit";
-        }
     }
 
     public function render()

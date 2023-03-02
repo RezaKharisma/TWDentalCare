@@ -35,7 +35,7 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -57,7 +57,7 @@ class DokterController extends Controller
      */
     public function edit(Dokter $dokter)
     {
-        //
+
     }
 
     /**

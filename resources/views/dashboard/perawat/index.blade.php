@@ -3,9 +3,9 @@
 
     <div class="row mb-4">
         <div class="col">
-            <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalInfo"><i
-                    class="fa fa-info-circle me-1"></i> Info</button>
-            <a class="btn btn-primary" href="/dashboard/perawat/create"><i class="fa fa-plus me-1"></i> Tambah Data</a>
+            <x-ui.button type="button" style="secondary" name="Refresh" icon="redo-alt me-1" onclick="location.reload()"/>
+            <x-ui.button type="button" style="info" modal="modalInfo" name="Info" icon="info-circle me-1" />
+            <x-ui.button type="link" style="primary" href="/dashboard/perawat/create" icon="plus me-1" name="Tambah Data" />
         </div>
     </div>
 
