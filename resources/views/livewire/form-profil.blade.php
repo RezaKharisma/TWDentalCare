@@ -1,4 +1,7 @@
 <div>
+    <form action="">
+        
+    </form>
     <form id="formAccountSettings" method="POST" onsubmit="return false">
         <div class="row">
             <div class="mb-3 col-md-6">

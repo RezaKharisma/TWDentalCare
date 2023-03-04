@@ -43,7 +43,7 @@
                 <div class="row">
                     <label class="col-md-4 col-form-label hidden"></label>
                     <div class="col-md-8">
-                        <a href="/dashboard/pengaturan/#changePassword">ingin merubah password ?</a>
+                        <a href="/dashboard/pengaturan">ingin merubah password ?</a>
                     </div>
                 </div>
             </div>

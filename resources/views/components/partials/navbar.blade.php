@@ -46,11 +46,10 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                            data-bs-target="#modalProfile">
+                        <a class="dropdown-item" href="/dashboard/pengaturan" >
                             <i class="fas fa-user me-2"></i>
                             <span class="align-middle">Profil</span>
-                        </button>
+                        </a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="/dashboard/pengaturan">
