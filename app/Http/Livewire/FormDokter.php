@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\DokterController;
+use DateTime;
 use Illuminate\Http\Request;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -11,19 +12,7 @@ class FormDokter extends Component
 {
     use WithFileUploads;
 
-    public $form = [
-        'nama' => '',
-        'email' => '',
-        'jenisKelamin' => '',
-        'tempatLahir' => '',
-        'tanggalLahir' => '',
-        'umur' => '0',
-        'agama' => '0',
-        'nomorTelepon' => '',
-        'alamat' => '',
-        'pendidikan' => '',
-        'foto' => '',
-    ];
+    public $form;
 
     public $foto;
 
@@ -35,51 +24,8 @@ class FormDokter extends Component
 
     public function mount()
     {
-        $this->form['tanggalLahir'] = now()->format('Y-m-d');
-
-        $this->jenKelRadios = [
-            [
-                'value' => '1',
-                'label' => 'Laki - laki'
-            ],
-            [
-                'value' => '0',
-                'label' => 'Perempuan'
-            ]
-        ];
-
-        $this->agamaSelect = [
-            [
-                'label' => 'Pilih agama...',
-                'value' => '0',
-                'disabled' => true,
-                'selected' => true,
-            ],
-            [
-                'label' => 'Kristen',
-                'value' => 'Kristen',
-                'disabled' => false,
-                'selected' => false,
-            ],
-            [
-                'label' => 'Islam',
-                'value' => 'Islam',
-                'disabled' => false,
-                'selected' => false,
-            ],
-            [
-                'label' => 'Hindu',
-                'value' => 'Hindu',
-                'disabled' => false,
-                'selected' => false,
-            ],
-            [
-                'label' => 'Buddha',
-                'value' => 'Buddha',
-                'disabled' => false,
-                'selected' => false,
-            ]
-        ];
+        $this->getForm();
+        $this->getDefaultValue();
     }
 
     public function updated($form)
@@ -91,9 +37,30 @@ class FormDokter extends Component
         }
     }
 
+    public function updatedFormTanggalLahir()
+    {
+        $this->form['umur'] = $this->getUmur($this->form['tanggalLahir']);
+    }
+
     public function updatedFoto()
     {
         $this->form['foto'] = $this->foto;
+    }
+
+    public function getDefaultValue()
+    {
+        $this->jenKelRadios = [
+            ['value' => '1', 'label' => 'Laki - laki'],
+            ['value' => '0', 'label' => 'Perempuan']
+        ];
+
+        $this->agamaSelect = [
+            ['label' => 'Pilih agama...', 'value' => '0', 'disabled' => true, 'selected' => true],
+            ['label' => 'Kristen', 'value' => 'Kristen', 'disabled' => false, 'selected' => false],
+            ['label' => 'Islam', 'value' => 'Islam', 'disabled' => false, 'selected' => false],
+            ['label' => 'Hindu', 'value' => 'Hindu', 'disabled' => false, 'selected' => false],
+            ['label' => 'Buddha', 'value' => 'Buddha', 'disabled' => false, 'selected' => false,]
+        ];
     }
 
     public function getRules(){
@@ -103,12 +70,41 @@ class FormDokter extends Component
             'form.jenisKelamin' => 'required',
             'form.tempatLahir' => 'sometimes|nullable',
             'form.tanggalLahir' => 'required',
-            'form.umur' => 'sometimes|nullable|numeric',
+            'form.umur' => 'required',
             'form.agama' => 'sometimes|nullable',
+            'form.nomorTelepon' => 'required',
             'form.alamat' => 'required',
             'form.pendidikan' => 'sometimes|nullable',
             'form.foto' => 'required|size:1024|mimes:jpg,bmp,png,jpeg',
         ];
+    }
+
+    public function getForm()
+    {
+        $this->form = [
+            'nama' => old('nama') ?? '',
+            'email' => old('email') ?? '',
+            'jenisKelamin' => old('jenisKelamin') ?? '',
+            'tempatLahir' => old('tempatLahir') ?? '',
+            'tanggalLahir' => old('tanggalLahir') ?? '',
+            'agama' => old('agama') ?? '0',
+            'nomorTelepon' => old('nomorTelepon') ?? '',
+            'alamat' => old('alamat') ?? '',
+            'pendidikan' => old('pendidikan') ?? '',
+            'foto' => old('foto') ?? '',
+        ];
+    }
+
+    public function getUmur($tanggal_lahir){
+        $tanggal_lahir = new DateTime($tanggal_lahir);
+        $sekarang = new DateTime("today");
+        if ($tanggal_lahir > $sekarang) {
+        return "0";
+        }
+        $thn = $sekarang->diff($tanggal_lahir)->y;
+        $bln = $sekarang->diff($tanggal_lahir)->m;
+        $tgl = $sekarang->diff($tanggal_lahir)->d;
+        return $thn;
     }
 
     public function resetForm()
@@ -116,23 +112,7 @@ class FormDokter extends Component
         $this->resetErrorBag();
         $this->resetValidation();
         $this->foto = [];
-        $this->form = [
-            'nama' => '',
-            'email' => '',
-            'jenisKelamin' => '',
-            'tempatLahir' => '',
-            'tanggalLahir' => now()->format('Y-m-d'),
-            'agama' => '0',
-            'nomorTelepon' => '',
-            'alamat' => '',
-            'pendidikan' => '',
-            'foto' => '',
-        ];
-    }
-
-    public function getPath()
-    {
-        return dirname($this->storage->path($this->form['foto']));
+        $this->getForm();
     }
 
     public function simpan()

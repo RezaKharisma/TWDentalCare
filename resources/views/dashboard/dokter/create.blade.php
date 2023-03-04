@@ -12,16 +12,13 @@
 
     <div class="row mb-4">
         <div class="col-xxl">
-            <div class="card">
-                <h5 class="card-header bg-secondary text-white">Informasi</h5>
-                <div class="card-body">
-                    <div class="list-group list-group-flush mt-4">
-                        <a href="javascript:void(0);" class="list-group-item list-group-item-action">
-                            Tanda (<span class="required">*</span>) wajib diisi.
-                        </a>
-                    </div>
+            <x-ui.card cardHeader="Informasi">
+                <div class="list-group list-group-flush mt-4">
+                    <a href="javascript:void(0);" class="list-group-item list-group-item-action">
+                        Tanda (<span class="required">*</span>) wajib diisi.
+                    </a>
                 </div>
-            </div>
+            </x-ui.card>
         </div>
     </div>
 

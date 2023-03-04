@@ -14,10 +14,6 @@
     $class = 'form-control'.$invalid;
 @endphp
 
-@if (session('form.'.$name))
-    {{ session('form.'.$name) }}
-@endif
-
 @if ($layout == 'V' || $layout == 'Vertical')
     <div class="mb-3">
         <label class="form-label" for="{{ $label }}">{{ $label }}
@@ -30,7 +26,7 @@
                 @if ($icon)
                     <span class="input-group-text" @error('form.'.$name) style="border: 1px solid red" @enderror><i class="fas fa-{{ $icon }}"></i></span>
                 @endif
-                <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value ?? old($name) }}'
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
                 {{ $attributes->whereStartsWith('wire:model') }}>
                 @if ($endText)
                     <span class="input-group-text">{{ $endText }}</span>
@@ -40,7 +36,7 @@
                 @enderror
             </div>
         @else
-            <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value ?? old($name) }}'
+            <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
             {{ $attributes->whereStartsWith('wire:model') }}>
             @error('form.'.$name)
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -60,7 +56,7 @@
                     @if ($icon)
                         <span class="input-group-text" @error('form.'.$name) style="border: 1px solid red" @enderror><i class="fas fa-{{ $icon }}"></i></span>
                     @endif
-                    <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value ?? old($name) }}'
+                    <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
                     {{ $attributes->whereStartsWith('wire:model') }}>
                     @if ($endText)
                         <span class="input-group-text">{{ $endText }}</span>
@@ -70,7 +66,7 @@
                     @enderror
                 </div>
             @else
-                <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value ?? old($name) }}'
+                <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
                 {{ $attributes->whereStartsWith('wire:model') }}>
                 @error('form.'.$name)
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -79,9 +75,3 @@
         </div>
     </div>
 @endif
-
-{{-- <div class="input-group input-group-merge">
-    <span class="input-group-text"><i class="bx bx-envelope"></i></span>
-    <input type="text" id="basic-icon-default-email" class="form-control is-invalid" placeholder="john.doe" aria-label="john.doe" aria-describedby="basic-icon-default-email2">
-    <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
-  </div> --}}

@@ -153,6 +153,7 @@ return [
         'form.tanggalLahir' => 'Tanggal Lahir',
         'form.umur' => 'Umur',
         'form.agama' => 'Agama',
+        'form.nomorTelepon' => 'Nomor Telepon',
         'form.alamat' => 'Alamat',
         'form.pendidikan' => 'Pendidikan',
         'form.foto' => 'Foto',

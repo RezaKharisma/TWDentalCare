@@ -12,6 +12,11 @@
     ])
 --}}
 
+@php
+    $invalid = ($errors->has('form.'.$name)) ? ' is-invalid' : '' ;
+    $class = 'form-select'.$invalid;
+@endphp
+
 @if ($layout == 'V' || $layout == 'Vertical')
     <div class="mb-3">
         <label class="form-label">{{ $label }}
@@ -19,7 +24,7 @@
                 <span style="color: red">*</span>
             @endif
         </label>
-        <select {{ $attributes->merge(['class' => 'form-select']) }} name="{{ $name }}" @if ($required) required @endif
+        <select {{ $attributes->merge(['class' => $class]) }} name="{{ $name }}" @if ($required) required @endif
             {{ $attributes->whereStartsWith('wire:model') }}>
             @foreach ($options as $key => $opt)
                 <option
@@ -30,6 +35,9 @@
                 </option>
             @endforeach
         </select>
+        @error('form.'.$name)
+            <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
     </div>
 @elseif ($layout == 'H' || $layout == 'Horizontal')
     <div class="row mb-3">
@@ -39,7 +47,7 @@
             @endif
         </label>
         <div class="col-sm-10">
-            <select {{ $attributes->merge(['class' => 'form-select']) }} name="{{ $name }}" @if ($required) required @endif
+            <select {{ $attributes->merge(['class' => $class]) }} name="{{ $name }}" @if ($required) required @endif
                 {{ $attributes->whereStartsWith('wire:model') }}>
                 @foreach ($options as $key => $opt)
                     <option
@@ -50,6 +58,9 @@
                     </option>
                 @endforeach
             </select>
+            @error('form.'.$name)
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
     </div>
 @endif

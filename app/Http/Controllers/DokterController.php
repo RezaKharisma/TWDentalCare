@@ -35,7 +35,17 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $validatedData = $request->validate([
+            'nama' => 'required|min:6',
+            'email' => 'required|email',
+            'jenisKelamin' => 'required',
+            'tanggalLahir' => 'required',
+            'nomorTelepon' => 'required',
+            'alamat' => 'required',
+            'foto' => 'required|size:1024|mimes:jpg,bmp,png,jpeg',
+        ]);
+
+        dd($validatedData);
     }
 
     /**
