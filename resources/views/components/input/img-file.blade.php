@@ -8,8 +8,8 @@
 --}}
 
 @php
-    $invalid = ($errors->has('form.'.$name)) ? ' is-invalid' : '' ;
-    $class = 'img-thumbnail'.$invalid;
+    $invalid = ($errors->has($name)) ? ' is-invalid' : '' ;
+    $class = 'form-control'.$invalid;
 @endphp
 
 @if ($layout == 'V' || $layout == 'Vertical')
@@ -17,13 +17,13 @@
         <label class="form-label">Foto</label>
         <div class="mb-3">
             @if ($foto)
-                <img src="{{ $foto->temporaryUrl() }}" {{ $attributes->merge(['class' => $class]) }} alt="{{ $name }}" width="{{ $width }}">
+                <img src="{{ $foto->temporaryUrl() }}" class="img-thumbnail" alt="{{ $name }}" width="{{ $width }}">
             @else
-                <img src="{{ $defaultImage }}" {{ $attributes->merge(['class' => $class]) }} alt="{{ $name }}" width="{{ $width }}">
+                <img src="{{ $defaultImage }}" class="img-thumbnail" alt="{{ $name }}" width="{{ $width }}">
             @endif
         </div>
-        <input class="form-control" type="file" name="{{ $name }}" @if ($required) required @endif {{ $attributes->whereStartsWith('wire:model') }}>
-        @error('form.'.$name)
+        <input {{ $attributes->merge(['class' => $class]) }} type="file" name="{{ $name }}" accept="image/png, image/bmp, image/jpeg, image/jpg" @if ($required) required @endif {{ $attributes->whereStartsWith('wire:model') }}>
+        @error($name)
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
@@ -37,13 +37,13 @@
         <div class="col-sm-10">
             <div class="mb-3">
                 @if ($foto)
-                    <img src="{{ $foto->temporaryUrl() }}" {{ $attributes->merge(['class' => $class]) }} alt="{{ $name }}" width="{{ $width }}">
+                    <img src="{{ $foto->temporaryUrl() }}" class="img-thumbnail" alt="{{ $name }}" width="{{ $width }}">
                 @else
-                    <img src="{{ $defaultImage }}" {{ $attributes->merge(['class' => $class]) }} alt="{{ $name }}" width="{{ $width }}">
+                    <img src="{{ $defaultImage }}" class="img-thumbnail" alt="{{ $name }}" width="{{ $width }}">
                 @endif
             </div>
-            <input class="form-control" type="file" name="{{ $name }}" @if ($required) required @endif {{ $attributes->whereStartsWith('wire:model') }}>
-            @error('form.'.$name)
+            <input {{ $attributes->merge(['class' => $class]) }} type="file" name="{{ $name }}" accept="image/png, image/bmp, image/jpeg, image/jpg" @if ($required) required @endif {{ $attributes->whereStartsWith('wire:model') }}>
+            @error($name)
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>

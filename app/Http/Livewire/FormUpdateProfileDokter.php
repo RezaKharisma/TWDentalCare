@@ -2,25 +2,19 @@
 
 namespace App\Http\Livewire;
 
-use DateTime;
 use App\Helpers\DefaultValue;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use DateTime;
 use Livewire\Component;
-use Livewire\WithFileUploads;
 
-class FormDokter extends Component
+class FormUpdateProfileDokter extends Component
 {
-    use WithFileUploads;
-
-    use LivewireAlert;
-
     public $form;
-
-    public $foto;
 
     public $jenKelRadios;
 
     public $agamaSelect;
+
+    public $buttonType = "button";
 
     public function mount()
     {
@@ -30,7 +24,11 @@ class FormDokter extends Component
 
     public function updated($form)
     {
-        $this->validateOnly($form, $this->getRules());
+        $validatedData = $this->validateOnly($form, $this->getRules());
+
+        if ($validatedData) {
+            $this->buttonType = "submit";
+        }
     }
 
     public function updatedFormTanggalLahir()
@@ -38,33 +36,10 @@ class FormDokter extends Component
         $this->form['umur'] = $this->getUmur($this->form['tanggalLahir']);
     }
 
-    public function updatedFoto()
-    {
-        $this->validate([
-            'foto' => "nullable|image|max:2048|mimes:jpg,jpeg,png,svg,gif"
-        ]);
-    }
-
     public function getDefaultValue()
     {
         $this->jenKelRadios = DefaultValue::getJenisKelamin();
         $this->agamaSelect = DefaultValue::getAgama();
-    }
-
-    public function getRules(){
-        return [
-            'form.nama' => 'required',
-            'form.email' => 'required|email',
-            'form.jenisKelamin' => 'required',
-            'form.tempatLahir' => '',
-            'form.tanggalLahir' => 'required',
-            'form.umur' => 'required',
-            'form.agama' => '',
-            'form.nomorTelepon' => 'required',
-            'form.alamat' => 'required',
-            'form.pendidikan' => '',
-            'foto' => 'nullable|image|max:2048|mimes:jpg,jpeg,png,svg,gif'
-        ];
     }
 
     public function getForm()
@@ -82,11 +57,27 @@ class FormDokter extends Component
         ];
     }
 
+    public function getRules(){
+        return [
+            'form.nama' => 'required',
+            'form.email' => 'required|email',
+            'form.jenisKelamin' => 'required',
+            'form.tempatLahir' => 'sometimes|nullable',
+            'form.tanggalLahir' => 'required',
+            'form.umur' => 'required',
+            'form.agama' => 'sometimes|nullable',
+            'form.nomorTelepon' => 'required',
+            'form.alamat' => 'required',
+            'form.pendidikan' => 'sometimes|nullable',
+            'form.foto' => 'required|size:1024|mimes:jpg,bmp,png,jpeg',
+        ];
+    }
+
     public function getUmur($tanggal_lahir){
         $tanggal_lahir = new DateTime($tanggal_lahir);
         $sekarang = new DateTime("today");
         if ($tanggal_lahir > $sekarang) {
-            return "0";
+        return "0";
         }
         $thn = $sekarang->diff($tanggal_lahir)->y;
         return $thn;
@@ -96,21 +87,20 @@ class FormDokter extends Component
     {
         $this->resetErrorBag();
         $this->resetValidation();
-        $this->foto = [];
         $this->getForm();
     }
 
     public function simpan()
     {
-        $this->alert('warning', 'Mohon periksa form kembali!');
+        $validatedData = $this->validate($this->getRules());
 
-        $this->validate($this->getRules());
-
-        $this->alert('success', 'Data berhasil tersimpan!');
+        if ($validatedData) {
+            $this->buttonType = "submit";
+        }
     }
 
     public function render()
     {
-        return view('livewire.form-dokter');
+        return view('livewire.form-update-profile-dokter');
     }
 }

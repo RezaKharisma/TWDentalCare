@@ -25,7 +25,7 @@
                 </div>
                 <hr class="my-0">
                 <div class="card-body">
-                    <livewire:form-profil />
+                    <livewire:form-update-profile-dokter />
                 </div>
             </div>
             <div class="card">
@@ -51,4 +51,5 @@
             </div>
         </div>
     </div>
+
 </x-layouts.main>

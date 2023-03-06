@@ -22,6 +22,10 @@
 
 @livewireScripts
 
+<script src="{{ asset('js/ui-toasts.js') }}"></script>
+
+<x-livewire-alert::scripts />
+
 @stack('script')
 
 </body>
