@@ -1,9 +1,8 @@
 <div>
     <form wire:submit.prevent='simpan' class="mt-4">
         <x-input.text layout='H' label='nomor rekam medis' name='noRM' value='RM001' wire:model.lazy="form.noRM" readonly />
-        <x-input.text layout='H' label='dokter' name='idDokter' wire:model.lazy="form.idDokter" required />
-        <x-input.select layout='H' label='dokter' :options='$dataDokter' />
-        <x-input.text layout='H' label='perawat' name='idPerawat' wire:model.lazy="form.idPerawat" required />
+        <livewire:tools.autocomplete-dokter layout='H' label='dokter' name='idDokter' required />
+        <livewire:tools.autocomplete-perawat layout='H' label='perawat' name='idPerawat' required />
 
         <hr class="m-0 mb-4 mt-4">
 

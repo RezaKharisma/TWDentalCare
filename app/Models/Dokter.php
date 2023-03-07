@@ -15,6 +15,5 @@ class Dokter extends Model
      * @var array<int, string>
      */
     protected $guarded = ['id'];
-
     protected $table = 'dokter';
 }

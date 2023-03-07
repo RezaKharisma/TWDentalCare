@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Dokter>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Perawat>
  */
-class DokterFactory extends Factory
+class PerawatFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -31,7 +30,6 @@ class DokterFactory extends Factory
             'pendidikan' => fake()->company(),
             'foto' => fake()->image(),
             'status' => 'Aktif',
-            'pasienDitangani' => fake()->randomDigit(),
         ];
     }
 }

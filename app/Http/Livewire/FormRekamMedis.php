@@ -12,11 +12,11 @@ class FormRekamMedis extends Component
 
     public $form;
 
-    public $dataPasien;
+    public $dataPasien = [];
 
-    public $dataDokter;
+    public $optDokter = [];
 
-    public $dataDiagnosis;
+    public $dataDiagnosis = [];
 
     public function mount()
     {
@@ -28,9 +28,9 @@ class FormRekamMedis extends Component
     {
         $this->form = [
             'noRM' => 'RM001',
-            'idDokter' => 'Dokter Admin',
-            'idPerawat' => 'Perawat Admin',
-            'idPasien' => 'Made Admin',
+            'idDokter' => '0',
+            'idPerawat' => '0',
+            'idPasien' => '0',
             'alergi' => '',
             'anamnesis' => '',
             'idDiagnosis' => '',
@@ -58,8 +58,21 @@ class FormRekamMedis extends Component
 
     public function getDataDokter()
     {
-        $this->dataDokter = Dokter::select('name')->all();
-        dd($this->dataDokter);
+        array_push($this->optDokter, [
+            'label' => "Pilih dokter...",
+            'value' => '0',
+            'disabled' => true,
+            'selected' => true
+        ]);
+
+        foreach (Dokter::all() as $dokter) {
+            array_push($this->optDokter, [
+                'label' => $dokter->nama,
+                'value' => $dokter->id,
+                'disabled' => false,
+                'selected' => false
+            ]);
+        }
     }
 
     public function resetForm()

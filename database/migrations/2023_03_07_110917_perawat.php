@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dokter', function (Blueprint $table) {
+        Schema::create('perawat', function (Blueprint $table) {
             $table->id();
             $table->integer('id_user');
             $table->string('nama');
@@ -28,7 +28,6 @@ return new class extends Migration
             $table->string('pendidikan');
             $table->string('foto');
             $table->string('status');
-            $table->string('pasienDitangani');
             $table->timestamps();
         });
     }
