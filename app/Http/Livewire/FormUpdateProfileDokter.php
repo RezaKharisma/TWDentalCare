@@ -4,17 +4,18 @@ namespace App\Http\Livewire;
 
 use App\Helpers\DefaultValue;
 use DateTime;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class FormUpdateProfileDokter extends Component
 {
+    use LivewireAlert;
+
     public $form;
 
     public $jenKelRadios;
 
     public $agamaSelect;
-
-    public $buttonType = "button";
 
     public function mount()
     {
@@ -25,10 +26,6 @@ class FormUpdateProfileDokter extends Component
     public function updated($form)
     {
         $validatedData = $this->validateOnly($form, $this->getRules());
-
-        if ($validatedData) {
-            $this->buttonType = "submit";
-        }
     }
 
     public function updatedFormTanggalLahir()
@@ -45,15 +42,16 @@ class FormUpdateProfileDokter extends Component
     public function getForm()
     {
         $this->form = [
-            'nama' => old('nama') ?? '',
-            'email' => old('email') ?? '',
-            'jenisKelamin' => old('jenisKelamin') ?? '',
-            'tempatLahir' => old('tempatLahir') ?? '',
-            'tanggalLahir' => old('tanggalLahir') ?? '',
-            'agama' => old('agama') ?? '0',
-            'nomorTelepon' => old('nomorTelepon') ?? '',
-            'alamat' => old('alamat') ?? '',
-            'pendidikan' => old('pendidikan') ?? '',
+            'nama' => old('nama') ?? 'Made Admin',
+            'email' => old('email') ?? 'admin@gmail.com',
+            'jenisKelamin' => old('jenisKelamin') ?? '1',
+            'tempatLahir' => old('tempatLahir') ?? 'Denpasar',
+            'tanggalLahir' => old('tanggalLahir') ?? '2023-02-02',
+            'umur' => old('umur') ?? '25',
+            'agama' => old('agama') ?? '3',
+            'nomorTelepon' => old('nomorTelepon') ?? '081903407890',
+            'alamat' => old('alamat') ?? 'Jalan Raya Pemogan No 160',
+            'pendidikan' => old('pendidikan') ?? 'Sarjana Komputer',
         ];
     }
 
@@ -62,14 +60,13 @@ class FormUpdateProfileDokter extends Component
             'form.nama' => 'required',
             'form.email' => 'required|email',
             'form.jenisKelamin' => 'required',
-            'form.tempatLahir' => 'sometimes|nullable',
+            'form.tempatLahir' => '',
             'form.tanggalLahir' => 'required',
             'form.umur' => 'required',
-            'form.agama' => 'sometimes|nullable',
+            'form.agama' => '',
             'form.nomorTelepon' => 'required',
             'form.alamat' => 'required',
-            'form.pendidikan' => 'sometimes|nullable',
-            'form.foto' => 'required|size:1024|mimes:jpg,bmp,png,jpeg',
+            'form.pendidikan' => ''
         ];
     }
 
@@ -92,11 +89,11 @@ class FormUpdateProfileDokter extends Component
 
     public function simpan()
     {
-        $validatedData = $this->validate($this->getRules());
+        $this->alert('warning', 'Mohon periksa form kembali!');
 
-        if ($validatedData) {
-            $this->buttonType = "submit";
-        }
+        $this->validate($this->getRules());
+
+        $this->alert('success', 'Data berhasil tersimpan!');
     }
 
     public function render()

@@ -46,7 +46,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="/dashboard/pengaturan" >
+                        <a class="dropdown-item" href="/dashboard/pengaturan/profil" >
                             <i class="fas fa-user me-2"></i>
                             <span class="align-middle">Profil</span>
                         </a>

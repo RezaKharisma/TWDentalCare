@@ -4,11 +4,11 @@ namespace App\Http\Livewire;
 
 use App\Helpers\DefaultValue;
 use DateTime;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class FormPerawat extends Component
+class FormPasien extends Component
 {
     use WithFileUploads;
 
@@ -62,8 +62,7 @@ class FormPerawat extends Component
             'form.agama' => '',
             'form.nomorTelepon' => 'required',
             'form.alamat' => 'required',
-            'form.pendidikan' => '',
-            'foto' => 'nullable|image|max:2048|mimes:jpg,jpeg,png,svg,gif'
+            'form.pekerjaan' => '',
         ];
     }
 
@@ -78,7 +77,7 @@ class FormPerawat extends Component
             'agama' => old('agama') ?? '0',
             'nomorTelepon' => old('nomorTelepon') ?? '',
             'alamat' => old('alamat') ?? '',
-            'pendidikan' => old('pendidikan') ?? '',
+            'pekerjaan' => old('pekerjaan') ?? '',
         ];
     }
 
@@ -111,6 +110,6 @@ class FormPerawat extends Component
 
     public function render()
     {
-        return view('livewire.form-perawat');
+        return view('livewire.form-pasien');
     }
 }

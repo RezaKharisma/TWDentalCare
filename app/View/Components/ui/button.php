@@ -17,19 +17,25 @@ class button extends Component
     public $outline;
 
     public $name;
-    
+
     public $href;
 
     public $icon;
 
     public $modal;
 
+    public $navLink;
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($type = null, $style = null, $size = null, $rounded = null, $outline = null, $name = null, $href = null, $icon = null, $modal = null)
+    public function __construct(
+        $type = null, $style = null, $size = null,
+        $rounded = null, $outline = null, $name = null,
+        $href = null, $icon = null, $modal = null,
+        $navLink = null)
     {
         $this->type = $type ?? 'button';
         $this->style = $style ?? 'primary';
@@ -40,6 +46,7 @@ class button extends Component
         $this->href = $href ?? '#';
         $this->icon = $icon;
         $this->modal = $modal;
+        $this->navLink = $navLink;
     }
 
     /**

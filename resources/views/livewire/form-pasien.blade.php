@@ -10,11 +10,10 @@
         <x-input.select layout="H" label="Agama" name="agama" :options="$agamaSelect" wire:model.lazy="form.agama"/>
         <x-input.text layout="H" type="number" label="nomor telepon" name="nomorTelepon" icon="phone-alt" wire:model.lazy="form.nomorTelepon" required/>
         <x-input.textarea layout="H" label="alamat" name="alamat" wire:model.lazy="form.alamat" required />
-        <x-input.textarea layout="H" label="pendidikan" name="pendidikan" wire:model.lazy="form.pendidikan"/>
-        <x-input.img-file layout="H" label="foto" name="foto" :defaultImage="asset('img/userImage.jpg')" width="150" :foto="$foto" wire:model="foto"/>
+        <x-input.textarea layout="H" label="pekerjaan" name="pekerjaan" wire:model.lazy="form.pekerjaan"/>
         <div class="row justify-content-end">
             <div class="col-sm-10">
-                <x-ui.button type="link" style="secondary" name="Kembali" href="/dashboard/perawat" icon="chevron-left me-1" />
+                <x-ui.button type="link" style="secondary" name="Kembali" href="/dashboard/pasien" icon="chevron-left me-1" />
                 <x-ui.button type="reset" wire:click='resetForm' style="warning" name="Reset" />
                 <x-ui.button type="submit" style="primary" name="Simpan" />
             </div>

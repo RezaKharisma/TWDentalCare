@@ -27,6 +27,8 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/dashboard/pengaturan', [PengaturanController::class, 'index'])->name('pengaturan');
+Route::get('/dashboard/pengaturan/profil', [PengaturanController::class, 'indexProfil'])->name('pengaturan-profil');
+Route::get('/dashboard/pengaturan/password', [PengaturanController::class, 'indexPassword'])->name('pengaturan-password');
 
 Route::resource('/dashboard/dokter', DokterController::class);
 

@@ -35,17 +35,7 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email',
-            'jenisKelamin' => 'required',
-            'tanggalLahir' => 'required',
-            'nomorTelepon' => 'required',
-            'alamat' => 'required',
-            'foto' => 'image|max:2048|mimes:jpg,jpeg,png,svg,gif',
-        ]);
-
-        dd($validatedData);
+        //
     }
 
     /**
@@ -67,7 +57,7 @@ class DokterController extends Controller
      */
     public function edit(Dokter $dokter)
     {
-
+        //
     }
 
     /**
@@ -79,17 +69,7 @@ class DokterController extends Controller
      */
     public function update(Request $request, Dokter $dokter)
     {
-        $validatedData = $request->validate([
-            'nama' => 'required',
-            'email' => 'required|email',
-            'jenisKelamin' => 'required',
-            'tanggalLahir' => 'required',
-            'nomorTelepon' => 'required',
-            'alamat' => 'required',
-            'foto' => 'image|max:2048|mimes:jpg,jpeg,png,svg,gif',
-        ]);
-
-        dd($validatedData);
+        //
     }
 
     /**

@@ -14,15 +14,21 @@ class FormFotoProfil extends Component
 
     public $foto;
 
-    public $isDisabled = true;
+    protected $listeners = ['confirmed', 'cancelled'];
 
     public function updatedFoto()
     {
-        $this->isDisabled = true;
-
         $this->validate($this->getRules());
 
-        $this->isDisabled = false;
+        $this->alert('question', 'Ingin menyimpan foto', [
+            'timer' => null,
+            'showCancelButton' => true,
+            'cancelButtonText' => 'Cancel',
+            'showConfirmButton' => true,
+            'confirmButtonText' => 'Submit',
+            'onConfirmed' => 'confirmed',
+            'onDismissed' => 'cancelled'
+        ]);
     }
 
     public function getRules()
@@ -37,15 +43,14 @@ class FormFotoProfil extends Component
         $this->foto = '';
     }
 
-    public function simpan()
+    public function cancelled()
     {
-        $this->validate($this->getRules());
+        $this->resetFoto();
+    }
 
-        $this->alert('question', 'How are you today?', [
-            'showConfirmButton' => true,
-            'confirmButtonText' => 'Good',
-            'onConfirmed' => 'confirmed'
-        ]);
+    public function confirmed($data)
+    {
+        $this->alert('success', 'Foto berhasil tersimpan!');
     }
 
     public function render()
