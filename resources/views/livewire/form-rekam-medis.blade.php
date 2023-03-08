@@ -6,10 +6,7 @@
 
         <hr class="m-0 mb-4 mt-4">
 
-        <x-input.text layout='H' label='pasien' name='idPasien' wire:model.lazy="form.idPasien" required />
-        <x-input.text layout='H' label='umur' name='umur' wire:model.lazy="form.umur" readonly />
-        <x-input.textarea layout='H' label='pekerjaan' name='pekerjaan' wire:model.lazy="form.pekerjaan" readonly />
-        <x-input.text layout='H' label='kunjungan' name='kunjungan' wire:model.lazy="form.kunjungan" readonly />
+        <livewire:tools.autocomplete-pasien layout='H' label='pasien' name='idPasien' required />
 
         <hr class="m-0 mb-4 mt-4">
 

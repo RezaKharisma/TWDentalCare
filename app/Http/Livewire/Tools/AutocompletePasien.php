@@ -2,10 +2,10 @@
 
 namespace App\Http\Livewire\Tools;
 
-use App\Models\Dokter;
+use App\Models\Pasien;
 use Livewire\Component;
 
-class AutocompleteDokter extends Component
+class AutocompletePasien extends Component
 {
     public $layout;
     public $label;
@@ -21,7 +21,7 @@ class AutocompleteDokter extends Component
     {
         if(!empty($this->search))
         {
-            $this->records = Dokter::orderby('nama','asc')->select('*')->where('nama','like','%'.$this->search.'%')->limit(5)->get();
+            $this->records = Pasien::orderby('nama','asc')->select('*')->where('nama','like','%'.$this->search.'%')->limit(5)->get();
             $this->showdiv = true;
         }else{
             $this->showdiv = false;
@@ -31,11 +31,14 @@ class AutocompleteDokter extends Component
     // Fetch record by ID
     public function fetchEmployeeDetail($id = 0)
     {
-        $record = Dokter::select('*')->where('id',$id)->first();
+        $record = Pasien::select('*')->where('id',$id)->first();
+        $this->search = $record->name;
+        $this->empDetails = $record;
+        $this->showdiv = false;
     }
 
     public function render()
     {
-        return view('livewire.tools.autocomplete-dokter');
+        return view('livewire.tools.autocomplete-pasien');
     }
 }

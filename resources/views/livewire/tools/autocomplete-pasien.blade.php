@@ -63,4 +63,12 @@
             </div>
         @endif
     </div>
+
+    @if (!empty($empDetails))
+        {{ $empDetails->nama }}
+    @endif
+
+    {{-- <x-input.text layout='H' label='umur' name='umur' wire:model.lazy="form.umur" value="{{ $empDetails->umur ?? 'asd' }}" readonly />
+    <x-input.textarea layout='H' label='pekerjaan' name='pekerjaan' wire:model.lazy="form.pekerjaan" value="{{ $empDetails->pekerjaan ?? '' }}" readonly />
+    <x-input.text layout='H' label='kunjungan' name='kunjungan' wire:model.lazy="form.kunjungan" readonly /> --}}
 </div>
