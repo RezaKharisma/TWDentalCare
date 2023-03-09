@@ -27,6 +27,7 @@ class PasienFactory extends Factory
             'nomorTelepon' => fake()->phoneNumber(),
             'alamat' => fake()->address(),
             'pekerjaan' => fake()->company(),
+            'kunjungan' => fake()->randomDigit(),
         ];
     }
 }

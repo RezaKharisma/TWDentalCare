@@ -1,11 +1,3 @@
-{{--
-* $layout (Menentukan layout input : Horizontal / Vertical)
-* $label (Penamaan label input)
-* $name (Name label input)
-* $required (Input diperlukan)
-* $value (Value pada input)
---}}
-
 <div>
     @php
         $invalid = ($errors->has('form.'.$name)) ? ' is-invalid' : '' ;
@@ -24,7 +16,7 @@
                 <div class="list-group list-group-flush">
                     @if(!empty($records))
                         @foreach($records as $record)
-                            <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama}}</a>
+                            <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama_diagnosis}}</a>
                         @endforeach
                     @endif
                 </div>            
@@ -37,10 +29,9 @@
         @if(!empty($empDetails))
         <div class="row mb-3">
             <div class="col-sm-12">
-                <div class="list-group">
-                    <button disabled class="list-group-item list-group-item-action bg-primary text-white">Detail Dokter</button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>Name :</b> {{ $empDetails->nama }}</button>
-                    <button type="button" class="list-group-item list-group-item-action"><b>Status :</b> <span class="badge {{ $empDetails->status == 'Aktif' ? 'bg-success' : 'bg-danger' }}">{{ $empDetails->status }}</span></button>
+                <div class="row">
+                    <div class="col-6">asd</div>
+                    <div class="col-6">asd</div>
                 </div>
             </div>
         </div>
@@ -58,7 +49,7 @@
                     <div class="list-group list-group-flush">
                         @if(!empty($records))
                             @foreach($records as $record)
-                                <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama}}</a>
+                                <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama_diagnosis}}</a>
                             @endforeach
                         @endif
                     </div>            
@@ -71,19 +62,13 @@
 
         @if(!empty($empDetails))
         <div class="row mb-3">
-            <div class="offset-sm-2 col-sm-10">
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between align-items-center bg-primary text-white">Detail Dokter
-                        <button type="button" class="btn btn-danger btn-xs" wire:click='batalPilih'><i class="fa fa-times"></i></button>
-                    </li>
-                    <li class="list-group-item"><b>Name :</b> {{ $empDetails->nama }}</li>
-                    <li class="list-group-item "><b>Status :</b> 
-                        <span class="badge {{ $empDetails->status == 'Aktif' ? 'bg-success' : 'bg-danger' }}">{{ $empDetails->status }}</span>
-                    </li>
-                  </ul>
+            <div class="offset-2 col-sm-10">
+                <div class="row">
+                    <div class="col-6"><input class="form-control" type="text" id="firstName" name="firstName" value="John" autofocus=""></div>
+                    <div class="col-6"><input class="form-control" type="text" id="firstName" name="firstName" value="John" autofocus=""></div>
+                </div>
             </div>
         </div>
         @endif
     @endif
-
 </div>

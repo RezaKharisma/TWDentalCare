@@ -12,7 +12,6 @@ class AutocompletePerawat extends Component
     public $name;
     public $required;
     public $value;
-    public $attributes = [];
     public $showdiv = false;
     public $search = "";
     public $records;
@@ -30,9 +29,21 @@ class AutocompletePerawat extends Component
     }
 
     // Fetch record by ID
-    public function fetchEmployeeDetail($id = 0)
+    public function fetchData($id = 0)
     {
         $record = Perawat::select('*')->where('id',$id)->first();
+        
+        $this->search = $record->nama;
+        $this->empDetails = $record;
+        $this->showdiv = false;
+    }
+
+    public function batalPilih()
+    {
+        $this->showdiv = false;
+        $this->search = "";
+        $this->records = [];
+        $this->empDetails = [];
     }
 
     public function render()

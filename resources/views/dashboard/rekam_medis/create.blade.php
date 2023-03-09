@@ -37,5 +37,5 @@
             </div>
         </div>
     </div>
-
+    
 </x-layouts.main>

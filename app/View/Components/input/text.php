@@ -18,6 +18,8 @@ class text extends Component
 
     public $icon;
 
+    public $iconTxt;
+
     public $endText;
 
     public $value;
@@ -27,7 +29,7 @@ class text extends Component
      *
      * @return void
      */
-    public function __construct($type = null, $layout = null, $label = null, $name = null, $required = null, $icon = null, $endText = null, $value = null)
+    public function __construct($type = null, $layout = null, $label = null, $name = null, $required = null, $icon = null, $iconTxt = null, $endText = null, $value = null)
     {
         $this->type = $type ?? 'text';
         $this->layout = $layout ?? 'V';
@@ -35,6 +37,7 @@ class text extends Component
         $this->name = $name ?? 'name';
         $this->required = $required;
         $this->icon = $icon;
+        $this->iconTxt = $iconTxt;
         $this->endText = $endText;
         $this->value = $value;
     }

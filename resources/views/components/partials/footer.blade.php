@@ -10,6 +10,7 @@
 
 <!-- Vendors JS -->
 <script src="{{ asset('vendor/libs/apex-charts/apexcharts.js') }}"></script>
+<script src="{{ asset('js/bootstrap-autocomplete.min.js') }}"></script>
 
 <!-- Main JS -->
 <script src="{{ asset('js/main.js') }}"></script>

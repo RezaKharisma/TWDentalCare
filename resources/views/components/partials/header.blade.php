@@ -49,3 +49,8 @@
 </head>
 
 <body>
+
+@php
+    setlocale(LC_TIME, 'id_ID');
+    \Carbon\Carbon::setLocale('id');    
+@endphp

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Diagnosis;
 use App\Models\Dokter;
 use App\Models\Pasien;
 use App\Models\Perawat;
@@ -36,5 +37,6 @@ class DatabaseSeeder extends Seeder
         Dokter::factory(5)->create();
         Perawat::factory(5)->create();
         Pasien::factory(10)->create();
+        Diagnosis::factory(20)->create();
     }
 }

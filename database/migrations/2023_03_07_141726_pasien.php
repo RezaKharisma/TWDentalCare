@@ -25,6 +25,7 @@ return new class extends Migration
             $table->date('tanggalLahir');
             $table->integer('umur');
             $table->string('pekerjaan');
+            $table->integer('kunjungan');
             $table->timestamps();
         });
     }

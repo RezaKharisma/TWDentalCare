@@ -5,6 +5,7 @@
 * $name (Name label input)
 * $required (Input diperlukan)
 * $icon (Icon pada input)
+* $iconTxt (Icon pada input berupa text)
 * $endText (Text pada belakang input)
 * $value (Value pada input)
 --}}
@@ -21,10 +22,13 @@
                 <span style="color: red">*</span>
             @endif
         </label>
-        @if ($icon || $endText)
+        @if ($icon || $endText || $iconTxt)
             <div class="input-group input-group-merge">
-                @if ($icon)
-                    <span class="input-group-text" @error('form.'.$name) style="border: 1px solid red" @enderror><i class="fas fa-{{ $icon }}"></i></span>
+                @if ($icon || $iconTxt)
+                    <span class="input-group-text" @error('form.'.$name) style="border: 1px solid red" @enderror>
+                        @if ($icon)<i class="fas fa-{{ $icon }}"></i>@endif
+                        @if ($iconTxt){{ $iconTxt }}@endif
+                    </span>
                 @endif
                 <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
                 {{ $attributes->whereStartsWith('wire:model') }}>
@@ -51,10 +55,13 @@
             @endif
         </label>
         <div class="col-sm-10">
-            @if ($icon || $endText)
+            @if ($icon || $endText || $iconTxt)
                 <div class="input-group">
-                    @if ($icon)
-                        <span class="input-group-text" @error('form.'.$name) style="border: 1px solid red" @enderror><i class="fas fa-{{ $icon }}"></i></span>
+                    @if ($icon || $iconTxt)
+                        <span class="input-group-text" @error('form.'.$name) style="border: 1px solid red" @enderror>
+                            @if ($icon)<i class="fas fa-{{ $icon }}"></i>@endif
+                            @if ($iconTxt){{ $iconTxt }}@endif
+                        </span>
                     @endif
                     <input type="{{ $type }}" {{ $attributes->merge(['class' => $class]) }} name='{{ $name }}' placeholder="Masukkan {{ $label }}" @if ($required) required @endif value='{{ $value }}'
                     {{ $attributes->whereStartsWith('wire:model') }}>

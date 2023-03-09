@@ -36,7 +36,7 @@ class FormRekamMedis extends Component
             'idDiagnosis' => '',
             'riwayatPasien' => '',
             'perawatan' => '',
-            'alergi' => '',
+            'biaya' => '',
         ];
     }
 
@@ -88,7 +88,7 @@ class FormRekamMedis extends Component
 
         $this->alert('success', 'Data berhasil tersimpan!');
     }
-
+    
     public function render()
     {
         return view('livewire.form-rekam-medis');
