@@ -27,7 +27,7 @@
                             <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama}}</a>
                         @endforeach
                     @endif
-                </div>            
+                </div>
             @endif
             @error('form.'.$name)
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -38,7 +38,9 @@
         <div class="row mb-3">
             <div class="col-sm-12">
                 <div class="list-group">
-                    <button disabled class="list-group-item list-group-item-action bg-primary text-white">Detail Pasien</button>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-primary text-white">Detail Pasien
+                        <button type="button" class="btn btn-danger btn-xs" wire:click='batalPilih'><i class="fa fa-times"></i></button>
+                    </li>
                     <li class="list-group-item"><b>Name :</b>{{ $empDetails->nama }}</li>
                     <li class="list-group-item"><b>Alamat :</b> {{ $empDetails->alamat }}</li>
                     <li class="list-group-item"><b>Tempat, Tanggal Lahir :</b> {{ $empDetails->tempatLahir }}, {{ date('d-M-Y', (int)$empDetails->tanggalLahir) }}</li>
@@ -65,7 +67,7 @@
                                 <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama}}</a>
                             @endforeach
                         @endif
-                    </div>            
+                    </div>
                 @endif
                 @error('form.'.$name)
                     <div class="invalid-feedback">{{ $message }}</div>

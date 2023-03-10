@@ -4,10 +4,13 @@ namespace App\Http\Livewire\Tools;
 
 use App\Models\Diagnosis;
 use App\Models\Dokter;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 
 class TodoList extends Component
 {
+    use LivewireAlert;
+
     public $layout;
     public $label;
     public $name;
@@ -16,7 +19,7 @@ class TodoList extends Component
     public $showdiv = false;
     public $search = "";
     public $records;
-    public $empDetails;
+    public $empDetails = [];
 
     public function searchResult()
     {
@@ -30,19 +33,39 @@ class TodoList extends Component
 
     public function fetchData($id = 0)
     {
+        $cek = true;
+        $this->search = '';
         $record = Diagnosis::select('*')->where('id',$id)->first();
-        
-        $this->search = $record->nama;
-        $this->empDetails = $record;
+
+        if (!empty($this->empDetails)) {
+
+
+
+            // do {
+            //     foreach ($this->empDetails as $detail) {
+            //         if (in_array($record->nama_diagnosis, this)) {
+            //             # code...
+            //         }
+            //     }
+            // } while ($cek == true);
+        }
+
+        if ($cek) {
+            array_push($this->empDetails, [
+                'id' => $record->id,
+                'nama' => $record->nama_diagnosis
+            ]);
+        }else{
+            $this->alert('info', 'Diagnosis sudah dipilih');
+            $cek = true;
+        }
+
         $this->showdiv = false;
     }
 
-    public function batalPilih()
+    public function deleteList($key = 0)
     {
-        $this->showdiv = false;
-        $this->search = "";
-        $this->records = [];
-        $this->empDetails = [];
+        unset($this->empDetails[$key]);
     }
 
     public function render()

@@ -27,7 +27,7 @@
                             <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama}}</a>
                         @endforeach
                     @endif
-                </div>            
+                </div>
             @endif
             @error('form.'.$name)
                 <div class="invalid-feedback">{{ $message }}</div>
@@ -38,7 +38,9 @@
         <div class="row mb-3">
             <div class="col-sm-12">
                 <div class="list-group">
-                    <button disabled class="list-group-item list-group-item-action bg-primary text-white">Detail Dokter</button>
+                    <li class="list-group-item d-flex justify-content-between align-items-center bg-primary text-white">Detail Dokter
+                        <button type="button" class="btn btn-danger btn-xs" wire:click='batalPilih'><i class="fa fa-times"></i></button>
+                    </li>
                     <button type="button" class="list-group-item list-group-item-action"><b>Name :</b> {{ $empDetails->nama }}</button>
                     <button type="button" class="list-group-item list-group-item-action"><b>Status :</b> <span class="badge {{ $empDetails->status == 'Aktif' ? 'bg-success' : 'bg-danger' }}">{{ $empDetails->status }}</span></button>
                 </div>
@@ -61,7 +63,7 @@
                                 <a href='javascript:void(0);' class="list-group-item list-group-item-action" wire:click="fetchData({{ $record->id }})">{{ $record->nama}}</a>
                             @endforeach
                         @endif
-                    </div>            
+                    </div>
                 @endif
                 @error('form.'.$name)
                     <div class="invalid-feedback">{{ $message }}</div>
@@ -77,10 +79,10 @@
                         <button type="button" class="btn btn-danger btn-xs" wire:click='batalPilih'><i class="fa fa-times"></i></button>
                     </li>
                     <li class="list-group-item"><b>Name :</b> {{ $empDetails->nama }}</li>
-                    <li class="list-group-item "><b>Status :</b> 
+                    <li class="list-group-item "><b>Status :</b>
                         <span class="badge {{ $empDetails->status == 'Aktif' ? 'bg-success' : 'bg-danger' }}">{{ $empDetails->status }}</span>
                     </li>
-                  </ul>
+                </ul>
             </div>
         </div>
         @endif
