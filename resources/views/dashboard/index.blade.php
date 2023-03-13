@@ -2,76 +2,140 @@
     <div class="row g-4 mb-4">
         <div class="col-sm-6 col-xl-3">
             <div class="card">
-                <div class="card-body">
+                <div class="card-header bg-success text-white py-2 px-3">Dokter</div>
+                <div class="card-body mt-3">
                     <div class="d-flex align-items-start justify-content-between">
                         <div class="content-left">
-                            <span>Users</span>
-                            <div class="d-flex align-items-end mt-2">
-                                <h3 class="mb-0 me-2">12</h3>
-                                <small class="text-success">(100%)</small>
+                            <div class="d-flex align-items-end">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>
+                                            <div class="d-flex alert-success p-3 rounded-3">
+                                                <i class="fa fa-user-md fa-lg"></i> 
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="col mt-3">
+                                        <h3>{{ $dokter }}</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <small>Total Users</small>
+                            <small>Total Dokter</small>
                         </div>
-                        <span class="badge bg-label-primary rounded p-2">
-                            <i class="bx bx-user bx-sm"></i>
-                        </span>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                <a class="dropdown-item" href="/dashboard/dokter">Lihat Data</a>
+                                <a class="dropdown-item" href="/dashboard/dokter/create">Tambah Data</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-3">
             <div class="card">
-                <div class="card-body">
+                <div class="card-header bg-info text-white py-2 px-3">Perawat</div>
+                <div class="card-body mt-3">
                     <div class="d-flex align-items-start justify-content-between">
                         <div class="content-left">
-                            <span>Verified Users</span>
-                            <div class="d-flex align-items-end mt-2">
-                                <h3 class="mb-0 me-2">5</h3>
-                                <small class="text-success">(+95%)</small>
+                            <div class="d-flex align-items-end">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>
+                                            <div class="d-flex alert-info p-3 rounded-3">
+                                                <i class="fa fa-user-nurse fa-lg"></i> 
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="col mt-3">
+                                        <h3>{{ $perawat }}</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <small>Recent analytics </small>
+                            <small>Total Perawat</small>
                         </div>
-                        <span class="badge bg-label-success rounded p-2">
-                            <i class="bx bx-user-check bx-sm"></i>
-                        </span>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                <a class="dropdown-item" href="/dashboard/perawat">Lihat Data</a>
+                                <a class="dropdown-item" href="/dashboard/perawat/create">Tambah Data</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-3">
             <div class="card">
-                <div class="card-body">
+                <div class="card-header bg-danger text-white py-2 px-3">Pasien</div>
+                <div class="card-body mt-3">
                     <div class="d-flex align-items-start justify-content-between">
                         <div class="content-left">
-                            <span>Duplicate Users</span>
-                            <div class="d-flex align-items-end mt-2">
-                                <h3 class="mb-0 me-2">0</h3>
-                                <small class="text-success">(0%)</small>
+                            <div class="d-flex align-items-end">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>
+                                            <div class="d-flex alert-danger p-3 rounded-3">
+                                                <i class="fa fa-hospital-user fa-lg"></i> 
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="col mt-3">
+                                        <h3>{{ $pasien }}</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <small>Recent analytics</small>
+                            <small>Total Pasien</small>
                         </div>
-                        <span class="badge bg-label-danger rounded p-2">
-                            <i class="bx bx-group bx-sm"></i>
-                        </span>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                <a class="dropdown-item" href="/dashboard/pasien">Lihat Data</a>
+                                <a class="dropdown-item" href="/dashboard/pasien/create">Tambah Data</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-sm-6 col-xl-3">
             <div class="card">
-                <div class="card-body">
+                <div class="card-header bg-primary text-white py-2 px-3">Antrian</div>
+                <div class="card-body mt-3">
                     <div class="d-flex align-items-start justify-content-between">
                         <div class="content-left">
-                            <span>Verification Pending</span>
-                            <div class="d-flex align-items-end mt-2">
-                                <h3 class="mb-0 me-2">7</h3>
-                                <small class="text-danger">(+6%)</small>
+                            <div class="d-flex align-items-end">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>
+                                            <div class="d-flex alert-primary p-3 rounded-3">
+                                                <i class="fa fa-users fa-lg"></i> 
+                                            </div>
+                                        </h3>
+                                    </div>
+                                    <div class="col mt-3">
+                                        <h3>{{ $dokter }}</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <small>Recent analytics</small>
+                            <small>Total Antrian Hari Ini</small>
                         </div>
-                        <span class="badge bg-label-warning rounded p-2">
-                            <i class="bx bx-user-voice bx-sm"></i>
-                        </span>
+                        <div class="dropdown">
+                            <button class="btn p-0" type="button" id="cardOpt3" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                                <a class="dropdown-item" href="/dashboard/dokter">Lihat Data</a>
+                                <a class="dropdown-item" href="/dashboard/dokter/create">Tambah Data</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

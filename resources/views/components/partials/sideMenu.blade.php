@@ -72,6 +72,18 @@
             </a>
         </li>
 
+        <!-- Antrian -->
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Antrian</span>
+        </li>
+        <!-- Lihat Antrian -->
+        <li class="menu-item {{ request()->segment(2) == 'antrian' }}">
+            <a href="/dashboard/antrian" class="menu-link ">
+                <i class="menu-icon fas fa-users"></i>
+                <div data-i18n="Basic">Antrian</div>
+            </a>
+        </li>
+
         <!-- Laporan -->
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Laporan</span>

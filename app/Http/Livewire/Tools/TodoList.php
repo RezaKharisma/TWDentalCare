@@ -35,32 +35,29 @@ class TodoList extends Component
     {
         $cek = true;
         $this->search = '';
-        $record = Diagnosis::select('*')->where('id',$id)->first();
+        $this->showdiv = false;
+        $record = Diagnosis::select('*')->where('id', $id)->first();
 
         if (!empty($this->empDetails)) {
-
-
-
-            // do {
-            //     foreach ($this->empDetails as $detail) {
-            //         if (in_array($record->nama_diagnosis, this)) {
-            //             # code...
-            //         }
-            //     }
-            // } while ($cek == true);
+            foreach ($this->empDetails as $detail) {
+                if ($detail['nama'] == $record->nama_diagnosis) {
+                    $this->alert('info', 'Diagnosis sudah dipilih');
+                    $cek = false;
+                }
+            }
         }
 
         if ($cek) {
-            array_push($this->empDetails, [
-                'id' => $record->id,
-                'nama' => $record->nama_diagnosis
-            ]);
-        }else{
-            $this->alert('info', 'Diagnosis sudah dipilih');
-            $cek = true;
+            $this->pushArray($record);
         }
+    }
 
-        $this->showdiv = false;
+    public function pushArray($record)
+    {
+        array_push($this->empDetails, [
+            'id' => $record->id,
+            'nama' => $record->nama_diagnosis
+        ]);
     }
 
     public function deleteList($key = 0)
