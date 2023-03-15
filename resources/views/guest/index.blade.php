@@ -83,7 +83,7 @@
                         <div class="col-xxl">
                             <div class="card mb-4 ">
                                 <div class="card-header d-flex align-items-center justify-content-between border-bottom">
-                                    <h5 class="mb-0">Daftar Pasien</h5>
+                                    <h5 class="mb-0">Form Daftar Antrian</h5>
                                 </div>
                                 <div class="card-body">
                                     <livewire:daftar-antrian />

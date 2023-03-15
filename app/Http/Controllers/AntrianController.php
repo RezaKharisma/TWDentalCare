@@ -12,7 +12,11 @@ class AntrianController extends Controller
     }
 
     public function list()
-    {
-        return view('guest.tabel');
+    {   
+        \Carbon\Carbon::setLocale('id');
+        setlocale(LC_ALL, 'IND');
+        $date = \Carbon\Carbon::now()->formatLocalized('%A, %d %B %Y');
+
+        return view('guest.tabel', compact('date'));
     }
 }

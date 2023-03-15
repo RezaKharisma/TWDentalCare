@@ -78,7 +78,6 @@ class DaftarAntrian extends Component
     {
         $this->resetErrorBag();
         $this->resetValidation();
-        $this->foto = [];
         $this->getForm();
     }
 
@@ -89,6 +88,8 @@ class DaftarAntrian extends Component
         $this->validate($this->getRules());
 
         $this->alert('success', 'Data berhasil tersimpan!');
+
+        $this->flash('success', 'Data berhasil tersimpan!', [], '/list-antrian');
     }
 
     public function render()

@@ -61,8 +61,8 @@
         <div class="layout-page">
             <div class="content-wrapper">
                 <div class="container-xxl flex-grow-1 container-p-y">
-                    <h1>List Antrian</h1>
-                    <h4>Antrian per tanggal {{ now() }}</h4>
+                    <h1 class="d-flex justify-content-center">List Antrian</h1>
+                    <h4 class="d-flex justify-content-center">{{ $date }}</h4>
                     <div class="row mt-5">
                         <div class="col">
                             <a class="btn text-white btn-primary mb-3" href="/daftar-antrian">Daftar Antrian</a>
