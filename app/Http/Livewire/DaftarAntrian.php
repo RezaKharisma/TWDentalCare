@@ -2,13 +2,12 @@
 
 namespace App\Http\Livewire;
 
-use App\Helpers\DefaultValue;
 use DateTime;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
-use Livewire\WithFileUploads;
+use App\Helpers\DefaultValue;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class FormPasien extends Component
+class DaftarAntrian extends Component
 {
     use LivewireAlert;
 
@@ -36,13 +35,6 @@ class FormPasien extends Component
         $this->form['umur'] = $this->getUmur($this->form['tanggalLahir']);
     }
 
-    public function updatedFoto()
-    {
-        $this->validate([
-            'foto' => "nullable|image|max:2048|mimes:jpg,jpeg,png,svg,gif"
-        ]);
-    }
-
     public function getDefaultValue()
     {
         $this->jenKelRadios = DefaultValue::getJenisKelamin();
@@ -54,13 +46,9 @@ class FormPasien extends Component
             'form.nama' => 'required',
             'form.email' => 'required|email',
             'form.jenisKelamin' => 'required',
-            'form.tempatLahir' => '',
             'form.tanggalLahir' => 'required',
             'form.umur' => 'required',
-            'form.agama' => '',
             'form.nomorTelepon' => 'required',
-            'form.alamat' => 'required',
-            'form.pekerjaan' => '',
         ];
     }
 
@@ -70,12 +58,9 @@ class FormPasien extends Component
             'nama' => old('nama') ?? '',
             'email' => old('email') ?? '',
             'jenisKelamin' => old('jenisKelamin') ?? '',
-            'tempatLahir' => old('tempatLahir') ?? '',
             'tanggalLahir' => old('tanggalLahir') ?? '',
-            'agama' => old('agama') ?? '0',
             'nomorTelepon' => old('nomorTelepon') ?? '',
-            'alamat' => old('alamat') ?? '',
-            'pekerjaan' => old('pekerjaan') ?? '',
+            'umur' => old('umur') ?? '',
         ];
     }
 
@@ -108,6 +93,6 @@ class FormPasien extends Component
 
     public function render()
     {
-        return view('livewire.form-pasien');
+        return view('livewire.daftar-antrian');
     }
 }

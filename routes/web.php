@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DokterController;
 use App\Http\Controllers\LaporanController;
@@ -21,7 +22,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/', function (){
+    return view('home');
+});
+
+Route::get('/daftar-antrian', [AntrianController::class, 'index'])->name('antrian');
+Route::get('/list-antrian', [AntrianController::class, 'list'])->name('antrian');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
